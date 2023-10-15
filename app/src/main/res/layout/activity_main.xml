@@ -7,11 +7,104 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/txtLongitud"
+        android:layout_width="120dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="256dp"
+        android:fontFamily="@font/robotomedium"
+        android:lineSpacingExtra="24sp"
+        android:text="@string/txtLongitud"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/azulMedio"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/vlLatitud"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="72dp"
+        android:fontFamily="@font/robotomedium"
+        android:textColor="#0277BD"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/txtLatitud"
+        app:layout_constraintTop_toTopOf="@+id/vlLongitud"
+        tools:text="valor de prueba" />
+
+    <TextView
+        android:id="@+id/vlLongitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="256dp"
+        android:layout_marginEnd="84dp"
+        android:fontFamily="@font/robotomedium"
+        android:textColor="#0277BD"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="valor de prueba" />
+
+    <Button
+        android:id="@+id/btnInicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="316dp"
+        android:fontFamily="@font/robotomedium"
+        android:text="@string/btnButonInciar"
+        android:textSize="16sp"
+        app:icon="@android:drawable/ic_media_play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTittle" />
+
+    <Button
+        android:id="@+id/btnDetener"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/robotomedium"
+        android:text="@string/btnButonDetener"
+        android:textSize="16sp"
+        app:icon="@android:drawable/ic_media_pause"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnInicio" />
+
+    <TextView
+        android:id="@+id/txtLatitud"
+        android:layout_width="120dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="328dp"
+        android:fontFamily="@font/robotomedium"
+        android:lineSpacingExtra="24sp"
+        android:text="@string/txtLatitud"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/azulMedio"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/txtTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/robotoblack"
+        android:text="@string/app_name"
+        android:textColor="@color/azulOscuro"
+        android:textSize="48sp"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

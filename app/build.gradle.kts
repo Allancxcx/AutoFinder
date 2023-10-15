@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.dev.carfinder"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.dev.carfinder"
@@ -33,6 +33,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    dataBinding{
+        enable=true
+    }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -44,4 +51,8 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    // Dependencias del proyecto
+    implementation("org.greenrobot:eventbus:3.3.1")
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
 }
