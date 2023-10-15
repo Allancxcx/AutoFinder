@@ -1,6 +1,7 @@
 package com.dev.carfinder
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,9 @@ import org.greenrobot.eventbus.Subscribe
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var sharedPreferences: SharedPreferences
     private var _binding: ActivityMainBinding? = null
+
     private val binding: ActivityMainBinding
         get()= _binding!!
 
@@ -55,6 +58,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         service = Intent(this,ServiceLocacion::class.java)
+        sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE)
+
+        binding.btnLogout.setOnClickListener {
+            logout()
+        }
 
         binding.apply {
             btnInicio.setOnClickListener {
@@ -65,6 +73,16 @@ class MainActivity : AppCompatActivity() {
                 stopService(service)
             }
         }
+    }
+
+    private fun logout() {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("isLoggedIn", false)
+        editor.apply()
+
+        val intent = Intent(this, Login::class.java)
+        startActivity(intent)
+        finish()
     }
         override fun onStart() {
             super.onStart()

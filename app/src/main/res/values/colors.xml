@@ -5,4 +5,11 @@
     <color name="azulOscuro">#001F3F</color>
     <color name="azulMedio">#0074CC</color>
     <color name="azulClaro">#00AEEF</color>
+    <color name="azulCielo">#3D5AFE</color>
+    <color name="rojoNormal">#FF1744</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorBackground">#212121</color>
 </resources>

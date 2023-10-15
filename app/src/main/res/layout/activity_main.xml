@@ -53,27 +53,34 @@
         android:id="@+id/btnInicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="316dp"
+        android:layout_marginTop="312dp"
+        android:backgroundTint="@color/azulCielo"
         android:fontFamily="@font/robotomedium"
         android:text="@string/btnButonInciar"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/azulClaro"
+        android:textColorHint="@color/azulClaro"
+        android:textColorLink="@color/azulClaro"
         android:textSize="16sp"
         app:icon="@android:drawable/ic_media_play"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTittle" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTittle"
+        app:rippleColor="@color/rojoNormal" />
 
     <Button
         android:id="@+id/btnDetener"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/rojoNormal"
         android:fontFamily="@font/robotomedium"
         android:text="@string/btnButonDetener"
         android:textSize="16sp"
         app:icon="@android:drawable/ic_media_pause"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnInicio" />
 
@@ -100,12 +107,25 @@
         android:layout_marginTop="68dp"
         android:fontFamily="@font/robotoblack"
         android:text="@string/app_name"
-        android:textColor="@color/azulOscuro"
+        android:textColor="@color/design_default_color_primary_dark"
         android:textSize="48sp"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="182dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="88dp"
+        android:backgroundTint="@color/azulCielo"
+        android:text="@string/logut"
+        app:icon="@android:drawable/ic_lock_power_off"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

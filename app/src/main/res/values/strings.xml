@@ -7,5 +7,11 @@
     <string name="btnInicioSesion">Iniciar Sesión</string>
     <string name="txtIdConductor">Código Conductor</string>
     <string name="txtPassWord">Contraseña</string>
+    <string name="hint_username">Usuario</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="logo_description">Logo</string>
+    <string name="logut">Cerrar Sesion</string>
+
 
 </resources>
