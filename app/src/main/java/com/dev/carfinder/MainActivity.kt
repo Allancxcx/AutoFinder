@@ -4,18 +4,22 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.dev.carfinder.databinding.ActivityMainBinding
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private var _binding: ActivityMainBinding? = null
+    companion object{
+        lateinit var prefs: Prefs
+    }
 
     private val binding: ActivityMainBinding
         get()= _binding!!
@@ -54,6 +58,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -79,6 +85,9 @@ class MainActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.putBoolean("isLoggedIn", false)
         editor.apply()
+        val prefsSession= Prefs(applicationContext)
+        prefsSession.SaveCon(false)
+
 
         val intent = Intent(this, Login::class.java)
         startActivity(intent)

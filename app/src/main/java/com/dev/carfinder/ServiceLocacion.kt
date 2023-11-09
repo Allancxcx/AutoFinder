@@ -9,6 +9,7 @@ import android.location.Location
 import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
+import com.github.kittinunf.fuel.httpPost
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationAvailability
 import com.google.android.gms.location.LocationCallback
@@ -17,12 +18,14 @@ import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import org.greenrobot.eventbus.EventBus
+
 class ServiceLocacion : Service() {
 
     //Nombre del objeto a nivel de objeto del servicio
     companion object {
         const val CHANNEL_ID = "12345"
         const val NOTIFICATION_ID=12345
+            lateinit var prefs: Prefs
     }
 
     //Llamo al constructor fusedLocationProviderClient para poder utilizar los metodos correspondientes y obtener la latitud y longitud
@@ -33,14 +36,14 @@ class ServiceLocacion : Service() {
     private var notificationManager: NotificationManager? = null
 
     private var location: Location?=null
-
+   private var userData: UserData?=null
     override fun onCreate() {
         super.onCreate()
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         //Se coloca cada cuando se actualiza la ubicacion
         locationRequest =
-            LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 5000).setIntervalMillis(1000)
+            LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 30000).setIntervalMillis(30000)
                 .build()
         locationCallback = object : LocationCallback() {
             override fun onLocationAvailability(p0: LocationAvailability) {
@@ -60,6 +63,7 @@ class ServiceLocacion : Service() {
         }
     }
 
+
     //Creo el callback que me retornara la ubicacion necesaria
     @Suppress("MissingPermission")
     fun createLocationRequest(){
@@ -74,6 +78,39 @@ class ServiceLocacion : Service() {
     }
 
 
+fun envioApi(Coordenadas:String,ID:String)
+{
+
+    val url = "http://www.desarrollowebumg.somee.com/api/Ubicacion"
+
+    // Datos que enviarás en el cuerpo de la solicitud POST
+    val postData = listOf(
+        "Coordenadas_Geograficas" to Coordenadas,
+        "ID_Camion" to  ID
+        // Agrega otros parámetros según tu API
+    )
+
+    url.httpPost(postData).responseString { _, _, result ->
+        when (result) {
+            is com.github.kittinunf.result.Result.Failure -> {
+                val ex = result.getException()
+
+                println("envioApi: {$ex}")
+            }
+            is com.github.kittinunf.result.Result.Success-> {
+//
+            }
+
+            else -> {
+
+            }
+        }
+    }
+
+
+
+
+}
     //me sirve para desactivar la actualizacion automatica
     private fun removeLocationUpdates(){
         locationCallback?.let {
@@ -82,10 +119,7 @@ class ServiceLocacion : Service() {
         stopForeground(true)
         stopSelf()
     }
-    fun envioApi(){
 
-
-    }
     //actualizo la nueva ubicacion para siempre tener el tracking del vehiculo
     private fun onNewLocation(locationResult: LocationResult) {
         location = locationResult.lastLocation
@@ -96,9 +130,10 @@ class ServiceLocacion : Service() {
 
             ))
 
+        val prefs1= Prefs(applicationContext)
+        val ID_CONDUCTOR= prefs1.getID()
 
-
-
+        envioApi(  "${location?.latitude}, ${location?.longitude}",ID_CONDUCTOR.toString())
         startForeground(NOTIFICATION_ID,getNotification())
     }
 
